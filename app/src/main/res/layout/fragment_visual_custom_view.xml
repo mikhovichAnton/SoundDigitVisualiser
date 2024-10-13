@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".presentation.fragment.customanimation.VisualCustomViewFragment">
+
+    <com.android.sounddigitvisualiser.presentation.fragment.customanimation.CustomAnimationView
+        android:id="@+id/custom_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_start2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/znak"
+        android:text="Animate"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@id/menu_button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/menu_button2"
+        android:layout_width="91dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="78dp"
+        android:backgroundTint="@color/black"
+        android:text="Menu"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/button_start2"
+        app:layout_constraintEnd_toEndOf="@id/menu_button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/dropdown_menu2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/menu_button2"
+            app:layout_constraintEnd_toEndOf="@id/menu_button2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center"
+                android:text="Movement"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/fx_1"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:max="1500"
+                android:min="-1500"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="30dp"
+                android:text="X1"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/fy_1"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55dp"
+                android:max="1500"
+                android:min="-1500"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="55dp"
+                android:text="Y1"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/fx_2"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:max="1500"
+                android:min="-1500"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="80dp"
+                android:text="X2"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/fy_2"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="105dp"
+                android:layout_marginBottom="15dp"
+                android:max="150"
+                android:min="-15"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="105dp"
+                android:text="Y2"
+                android:textColor="@color/white" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="130dp"
+                android:text="Scale"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/for_scale"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="155dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:max="500"
+                android:min="2"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="155dp"
+                android:text="Min/Max"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="180dp"
+                android:text="Starting Points"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/point_x"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="205dp"
+                android:max="1000"
+                android:min="0"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="205dp"
+                android:text="Point x"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/button_r_form"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="315dp"
+                android:layout_marginTop="203dp"
+                android:background="@drawable/znak"
+                android:textAllCaps="false" />
+
+            <SeekBar
+                android:id="@+id/point_y"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="255dp"
+                android:layout_marginBottom="30dp"
+                android:max="1300"
+                android:min="0"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="255dp"
+                android:text="Point y"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="280dp"
+                android:text="Color Change"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/color_seek_bar"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="305dp"
+                android:layout_marginBottom="30dp"
+                android:max="23"
+                android:min="0"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="305dp"
+                android:text="Hand/Rand"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="330dp"
+                android:text="Reaction Speed"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/reaction_seek_bar"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="355dp"
+                android:layout_marginBottom="30dp"
+                android:max="1000"
+                android:min="50"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="355dp"
+                android:text="Hi/Lo"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/button_r_color"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="315dp"
+                android:layout_marginTop="303dp"
+                android:background="@drawable/znak"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/button_stop2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="389dp"
+                android:background="@drawable/znak"
+                android:text="Stop Animation"
+                android:textAllCaps="false" />
+        </FrameLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

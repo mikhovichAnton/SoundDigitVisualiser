@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/informationFragmentFirst">
+
+    <fragment
+        android:id="@+id/viewAnimatorFragment"
+        android:name="com.android.sounddigitvisualiser.presentation.fragment.imageviewanimation.ViewAnimatorFragment"
+        android:label="fragment_view_animator"
+        tools:layout="@layout/fragment_view_animator" >
+        <action
+            android:id="@+id/action_viewAnimatorFragment_to_loadingParameters"
+            app:destination="@id/loadingParameters" />
+        <argument
+            android:name="currentParameters"
+            app:argType="com.android.sounddigitvisualiser.domain.model.AnimationImageModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingParameters"
+        android:name="com.android.sounddigitvisualiser.presentation.fragment.imageviewanimation.LoadingParameters"
+        android:label="fragment_loading_parameters"
+        tools:layout="@layout/fragment_loading_parameters">
+        <action
+            android:id="@+id/action_loadingParameters_to_viewAnimatorFragment"
+            app:destination="@id/viewAnimatorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/informationFragmentFirst"
+        android:name="com.android.sounddigitvisualiser.presentation.fragment.startinginformation.InformationFragmentFirst"
+        android:label="fragment_information_first"
+        tools:layout="@layout/fragment_information_first" >
+        <action
+            android:id="@+id/action_informationFragmentFirst_to_visualCustomViewFragment"
+            app:destination="@id/visualCustomViewFragment" />
+        <action
+            android:id="@+id/action_informationFragmentFirst_to_informationFragmentSecond"
+            app:destination="@id/informationFragmentSecond" />
+    </fragment>
+    <fragment
+        android:id="@+id/informationFragmentSecond"
+        android:name="com.android.sounddigitvisualiser.presentation.fragment.startinginformation.InformationFragmentSecond"
+        android:label="fragment_information_second"
+        tools:layout="@layout/fragment_information_second" >
+        <action
+            android:id="@+id/action_informationFragmentSecond_to_viewAnimatorFragment"
+            app:destination="@id/viewAnimatorFragment" />
+        <action
+            android:id="@+id/navigation_without_params"
+            app:destination="@id/viewAnimatorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/visualCustomViewFragment"
+        android:name="com.android.sounddigitvisualiser.presentation.fragment.customanimation.VisualCustomViewFragment"
+        android:label="fragment_visual_custom_view"
+        tools:layout="@layout/fragment_visual_custom_view" />
+</navigation>
