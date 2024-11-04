@@ -16,7 +16,7 @@ interface AnimationImageDao {
     @Query("SELECT * FROM parameters WHERE animation_name = :parameterName")
     suspend fun getParameters(parameterName: String): List<AnimationImageEntity>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertParameter(animationImageEntity: AnimationImageEntity)
 
     @Delete

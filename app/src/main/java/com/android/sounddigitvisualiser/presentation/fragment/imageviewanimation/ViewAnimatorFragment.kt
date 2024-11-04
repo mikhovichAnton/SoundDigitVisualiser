@@ -92,7 +92,7 @@ class ViewAnimatorFragment : Fragment() {
             paramForColor,
             volume)
 
-//        checkParametersAndArgs(startingAnimationImageModel)
+        checkParametersAndArgs(startingAnimationImageModel)
 
 
 
@@ -199,8 +199,6 @@ class ViewAnimatorFragment : Fragment() {
             scaleFactor = imageModel.scaleFactor,
             volume = volume
         )
-        Toast.makeText(contextLate,
-            "Parameter ${imageModel.parameterName} loaded from storage",Toast.LENGTH_SHORT).show()
     }
 
     private fun navigateToLoadingParamsFragment(view: View) {
