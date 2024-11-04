@@ -222,8 +222,8 @@
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:max="-800"
-                android:min="-1"
+                android:max="800"
+                android:min="-800"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 android:progressTint="#03A9F4" />
@@ -269,8 +269,8 @@
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:max="-800"
-                android:min="-1"
+                android:max="800"
+                android:min="1"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 android:progressTint="#03A9F4" />
@@ -299,7 +299,7 @@
                 android:layout_marginTop="105dp"
                 android:layout_marginBottom="15dp"
                 android:max="800"
-                android:min="1"
+                android:min="-800"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 android:progressTint="#03A9F4" />
