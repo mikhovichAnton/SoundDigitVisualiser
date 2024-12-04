@@ -12,18 +12,28 @@
         android:id="@+id/custom_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cornerRadius="90dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/arrow_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_start2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/znak"
+        android:backgroundTint="@color/black"
         android:text="Animate"
         android:textAllCaps="false"
+        app:cornerRadius="40dp"
         app:layout_constraintBottom_toTopOf="@id/menu_button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +47,7 @@
         android:backgroundTint="@color/black"
         android:text="Menu"
         android:textAllCaps="false"
+        app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -205,12 +216,15 @@
 
             <Button
                 android:id="@+id/button_r_form"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="315dp"
                 android:layout_marginTop="203dp"
-                android:background="@drawable/znak"
-                android:textAllCaps="false" />
+                android:backgroundTint="@color/white"
+                android:text="R"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="40dp" />
 
             <SeekBar
                 android:id="@+id/point_y"
@@ -284,22 +298,70 @@
 
             <Button
                 android:id="@+id/button_r_color"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="315dp"
                 android:layout_marginTop="303dp"
-                android:background="@drawable/znak"
-                android:textAllCaps="false" />
+                android:backgroundTint="@color/white"
+                android:text="@string/random_button_text"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="40dp" />
 
             <Button
                 android:id="@+id/button_stop2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
-                android:layout_marginTop="389dp"
-                android:background="@drawable/znak"
-                android:text="Stop Animation"
-                android:textAllCaps="false" />
+                android:layout_marginTop="435dp"
+                android:backgroundTint="@color/white"
+                android:text="Stop"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="40dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etParameterName"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="380dp"
+                android:textColorHint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etParameterNameInput"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Insert Parameter Name"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_save2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="435dp"
+                android:backgroundTint="@color/white"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="40dp" />
+
+            <Button
+                android:id="@+id/button_load2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginTop="435dp"
+                android:layout_marginEnd="25dp"
+                android:backgroundTint="@color/white"
+                android:text="Load"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="40dp" />
         </FrameLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/informationFragmentFirst">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/viewAnimatorFragment"
@@ -16,6 +16,9 @@
         <argument
             android:name="currentParameters"
             app:argType="com.android.sounddigitvisualiser.domain.model.AnimationImageModel" />
+        <action
+            android:id="@+id/action_viewAnimatorFragment_to_informationFragmentSecond"
+            app:destination="@id/informationFragmentSecond" />
     </fragment>
     <fragment
         android:id="@+id/loadingParameters"
@@ -49,10 +52,50 @@
         <action
             android:id="@+id/navigation_without_params"
             app:destination="@id/viewAnimatorFragment" />
+        <action
+            android:id="@+id/action_informationFragmentSecond_to_informationFragmentThird"
+            app:destination="@id/informationFragmentThird" />
+        <action
+            android:id="@+id/action_informationFragmentSecond_to_informationFragmentFirst"
+            app:destination="@id/informationFragmentFirst" />
     </fragment>
     <fragment
         android:id="@+id/visualCustomViewFragment"
         android:name="com.android.sounddigitvisualiser.presentation.fragment.customanimation.VisualCustomViewFragment"
         android:label="fragment_visual_custom_view"
-        tools:layout="@layout/fragment_visual_custom_view" />
+        tools:layout="@layout/fragment_visual_custom_view" >
+        <action
+            android:id="@+id/action_visualCustomViewFragment_to_informationFragmentFirst"
+            app:destination="@id/informationFragmentFirst" />
+    </fragment>
+    <fragment
+        android:id="@+id/informationFragmentThird"
+        android:name="com.android.sounddigitvisualiser.presentation.fragment.startinginformation.InformationFragmentThird"
+        android:label="fragment_information_third"
+        tools:layout="@layout/fragment_information_third" >
+        <action
+            android:id="@+id/action_informationFragmentThird_to_informationFragmentSecond"
+            app:destination="@id/informationFragmentSecond" />
+        <action
+            android:id="@+id/action_informationFragmentThird_to_customIIAnimVisual"
+            app:destination="@id/customIIAnimVisual" />
+    </fragment>
+    <fragment
+        android:id="@+id/customIIAnimVisual"
+        android:name="com.android.sounddigitvisualiser.presentation.fragment.CustomIIAnimationV.CustomIIAnimVisual"
+        android:label="fragment_custom_i_i_anim_visual"
+        tools:layout="@layout/fragment_custom_i_i_anim_visual" >
+        <action
+            android:id="@+id/action_customIIAnimVisual_to_informationFragmentThird"
+            app:destination="@id/informationFragmentThird" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.android.sounddigitvisualiser.presentation.fragment.startinginformation.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_informationFragmentFirst"
+            app:destination="@id/informationFragmentFirst" />
+    </fragment>
 </navigation>

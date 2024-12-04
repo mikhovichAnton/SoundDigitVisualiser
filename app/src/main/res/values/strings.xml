@@ -2,4 +2,14 @@
     <string name="app_name">SoundDigitVisualiser</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="animation_review">
+        This type of animation has a complex format,
+        with lots of modifying settings
+        and saving them in to presets.
+        Most of them are unpredictable,
+        and made for very dynamic audio signal.
+        Try it, and have some fun! :)</string>
+    <string name="random_button_text">R</string>
+    <string name="movement">Movement</string>
+    <string name="up">Up</string>
 </resources>

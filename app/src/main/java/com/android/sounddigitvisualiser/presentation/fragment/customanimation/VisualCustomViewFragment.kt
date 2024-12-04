@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
 import android.widget.SeekBar
+import androidx.navigation.findNavController
 import com.android.sounddigitvisualiser.domain.controllers.AudioController
 import com.android.sounddigitvisualiser.databinding.FragmentVisualCustomViewBinding
 import com.android.sounddigitvisualiser.domain.repository.local.navigation.FragmentNavigation
@@ -67,12 +68,15 @@ class VisualCustomViewFragment : Fragment() {
 
 
         binding.apply {
+            backButton.setOnClickListener {
+                navigateToInfoMenu(view)
+            }
             buttonStart2.setOnClickListener {
                 buttonStart2.visibility = View.INVISIBLE
                 onButtonClicked()
             }
             buttonStop2.setOnClickListener {
-                navigateToMainFragment()
+                //need to add some logic here
             }
             menuButton2.setOnClickListener {
                 if (dropdownMenu2.visibility == View.VISIBLE){
@@ -282,12 +286,10 @@ class VisualCustomViewFragment : Fragment() {
         }
     }
 
-    private fun navigateToMainFragment(){
-        apply {
-            val navigate = this.activity as FragmentNavigation
-            navigate.navigationFrag(VisualCustomViewFragment(),false)
-            audioController.reset()
-        }
+    private fun navigateToInfoMenu(view: View){
+        val action = VisualCustomViewFragmentDirections.
+        actionVisualCustomViewFragmentToInformationFragmentFirst()
+        view.findNavController().navigate(action)
     }
 
     companion object {

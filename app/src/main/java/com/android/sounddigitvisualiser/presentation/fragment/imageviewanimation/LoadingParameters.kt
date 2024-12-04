@@ -1,11 +1,13 @@
 package com.android.sounddigitvisualiser.presentation.fragment.imageviewanimation
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.sounddigitvisualiser.databinding.FragmentLoadingParametersBinding
@@ -45,16 +47,29 @@ class LoadingParameters : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerCreation(view)
+        hideNavigationBar()
     }
 
-    private fun recyclerCreation(view: View){
-            with(binding) {
-                recyclerLoadingParams.layoutManager = LinearLayoutManager(contextLate)
-                recyclerLoadingParams.adapter = adapter
-                recyclerLoadingParams.setItemViewCacheSize(0)
-                animationViewModel.showAllAnimations()
-                animationViewModel.animationImageModelInit.observe(viewLifecycleOwner, Observer { animationImage ->
-                    adapter.setData(animationImage,animationViewModel,view)})
+    private fun recyclerCreation(view: View) {
+        with(binding) {
+            recyclerLoadingParams.layoutManager = LinearLayoutManager(contextLate)
+            recyclerLoadingParams.adapter = adapter
+            recyclerLoadingParams.setItemViewCacheSize(0)
+            animationViewModel.showAllAnimations()
+            animationViewModel.animationImageModelInit.observe(
+                viewLifecycleOwner,
+                Observer { animationImage ->
+                    adapter.setData(animationImage, animationViewModel, view)
+                })
+        }
+    }
+
+    private fun hideNavigationBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            requireActivity()
+                .window
+                .decorView
+                .windowInsetsController?.hide(WindowInsets.Type.navigationBars())
         }
     }
 }
