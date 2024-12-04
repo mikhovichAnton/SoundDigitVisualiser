@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".presentation.fragment.imageviewanimation.ViewAnimatorFragment">
+    tools:context=".presentation.fragment.CustomIIAnimationV.CustomIIAnimVisual">
+
+    <com.android.sounddigitvisualiser.presentation.fragment.CustomIIAnimationV.WaveformView
+        android:id="@+id/custom_ii"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/back_button"
@@ -18,206 +24,50 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button_start"
+        android:id="@+id/button_start2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:layout_marginBottom="50dp"
-        android:backgroundTint="@color/black"
         android:text="Animate"
         android:textAllCaps="false"
+        android:backgroundTint="@color/black"
         app:cornerRadius="40dp"
-        app:layout_constraintBottom_toTopOf="@id/menu_button"
+        app:layout_constraintBottom_toTopOf="@id/menu_button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/menu_button"
+        android:id="@+id/menu_button2"
         android:layout_width="91dp"
         android:layout_height="42dp"
         android:layout_marginTop="78dp"
         android:backgroundTint="@color/black"
         android:text="Menu"
         android:textAllCaps="false"
-        app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <View
-        android:id="@+id/visual_quatro8"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/dots"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.302" />
-
-    <View
-        android:id="@+id/visual_quatro7"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/dots_in_cirle"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.313"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
-
-    <View
-        android:id="@+id/visual_quatro"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_dots"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
-
-    <View
-        android:id="@+id/visual_triang"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/rounded_dots"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.418"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.278" />
-
-    <View
-        android:id="@+id/visual_quatro2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/dots"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.716" />
-
-    <View
-        android:id="@+id/visual_triang2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/double_circle"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
-
-    <View
-        android:id="@+id/visual_quatro3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/dots_in_cirle"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303" />
-
-    <View
-        android:id="@+id/visual_triang3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/dots"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612" />
-
-    <View
-        android:id="@+id/visual_triang4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/dots_in_cirle"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
-
-    <View
-        android:id="@+id/visual_quatro4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/oval"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612" />
-
-    <View
-        android:id="@+id/visual_quatro5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/dots"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
-
-    <View
-        android:id="@+id/visual_quatro6"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_dots"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.525" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="50dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/button_start"
-        app:layout_constraintEnd_toEndOf="@id/menu_button"
+        app:layout_constraintBottom_toTopOf="@id/button_start2"
+        app:layout_constraintEnd_toEndOf="@id/menu_button2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <FrameLayout
-            android:id="@+id/dropdown_menu"
+            android:id="@+id/dropdown_menu2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/menu_button"
-            app:layout_constraintEnd_toEndOf="@id/menu_button"
+            app:layout_constraintBottom_toTopOf="@+id/menu_button2"
+            app:layout_constraintEnd_toEndOf="@id/menu_button2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -225,16 +75,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center"
-                android:text="@string/movement"
+                android:text="Movement"
                 android:textColor="@color/white" />
 
             <SeekBar
-                android:id="@+id/pivot_x"
+                android:id="@+id/fx_1"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:max="800"
-                android:min="-800"
+                android:max="1500"
+                android:min="-1500"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 android:progressTint="#03A9F4" />
@@ -244,17 +94,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="217dp"
                 android:layout_marginTop="30dp"
-                android:text="@string/up"
+                android:text="X1"
                 android:textColor="@color/white" />
 
-
             <SeekBar
-                android:id="@+id/to_x"
+                android:id="@+id/fy_1"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="55dp"
-                android:max="800"
-                android:min="1"
+                android:max="1500"
+                android:min="-1500"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 android:progressTint="#03A9F4" />
@@ -264,16 +113,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="217dp"
                 android:layout_marginTop="55dp"
-                android:text="Down"
+                android:text="Y1"
                 android:textColor="@color/white" />
 
             <SeekBar
-                android:id="@+id/pivot_y"
+                android:id="@+id/fx_2"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:max="800"
-                android:min="1"
+                android:max="1500"
+                android:min="-1500"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 android:progressTint="#03A9F4" />
@@ -283,29 +132,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="217dp"
                 android:layout_marginTop="80dp"
-                android:text="Left"
+                android:text="X2"
                 android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/button_insert_motion"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="315dp"
-                android:layout_marginTop="80dp"
-                android:text="@string/random_button_text"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                app:cornerRadius="40dp"
-                android:textAllCaps="false" />
-
             <SeekBar
-                android:id="@+id/to_y"
+                android:id="@+id/fy_2"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="105dp"
                 android:layout_marginBottom="15dp"
-                android:max="800"
-                android:min="-800"
+                android:max="150"
+                android:min="-15"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
                 android:progressTint="#03A9F4" />
@@ -315,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="217dp"
                 android:layout_marginTop="105dp"
-                android:text="Right"
+                android:text="Y2"
                 android:textColor="@color/white" />
 
 
@@ -335,7 +172,7 @@
                 android:layout_marginTop="155dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
-                android:max="30"
+                android:max="500"
                 android:min="2"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white" />
@@ -353,15 +190,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="180dp"
-                android:text="Form Changing"
+                android:text="Starting Points"
                 android:textColor="@color/white" />
 
             <SeekBar
-                android:id="@+id/form_change"
+                android:id="@+id/point_x"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="205dp"
-                android:max="10"
+                android:max="1000"
                 android:min="0"
                 android:outlineAmbientShadowColor="@color/white"
                 android:outlineSpotShadowColor="@color/white"
@@ -372,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="217dp"
                 android:layout_marginTop="205dp"
-                android:text="Hand/Rand"
+                android:text="Point x"
                 android:textColor="@color/white" />
 
             <Button
@@ -381,28 +218,20 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="315dp"
                 android:layout_marginTop="203dp"
-                android:text="@string/random_button_text"
                 android:backgroundTint="@color/white"
+                android:text="@string/random_button_text"
+                android:textAllCaps="false"
                 android:textColor="@color/black"
-                app:cornerRadius="40dp"
-                android:textAllCaps="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|top"
-                android:layout_marginTop="230dp"
-                android:text="Reaction Speed"
-                android:textColor="@color/white" />
+                app:cornerRadius="40dp" />
 
             <SeekBar
-                android:id="@+id/reaction_duration"
+                android:id="@+id/point_y"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="255dp"
                 android:layout_marginBottom="30dp"
-                android:max="400"
-                android:min="20"
+                android:max="1300"
+                android:min="0"
                 android:progressTint="#03A9F4" />
 
             <TextView
@@ -410,7 +239,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="217dp"
                 android:layout_marginTop="255dp"
-                android:text="Hi/Low"
+                android:text="Point y"
                 android:textColor="@color/white" />
 
             <TextView
@@ -439,24 +268,50 @@
                 android:text="Hand/Rand"
                 android:textColor="@color/white" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="330dp"
+                android:text="Reaction Speed"
+                android:textColor="@color/white" />
+
+            <SeekBar
+                android:id="@+id/reaction_seek_bar"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="355dp"
+                android:layout_marginBottom="30dp"
+                android:max="1000"
+                android:min="50"
+                android:progressTint="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="217dp"
+                android:layout_marginTop="355dp"
+                android:text="Hi/Lo"
+                android:textColor="@color/white" />
+
             <Button
                 android:id="@+id/button_r_color"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="315dp"
                 android:layout_marginTop="303dp"
-                android:text="@string/random_button_text"
                 android:backgroundTint="@color/white"
+                android:text="@string/random_button_text"
+                android:textAllCaps="false"
                 android:textColor="@color/black"
-                app:cornerRadius="40dp"
-                android:textAllCaps="false" />
+                app:cornerRadius="40dp" />
 
             <Button
-                android:id="@+id/button_stop"
+                android:id="@+id/button_stop2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
-                android:layout_marginTop="389dp"
+                android:layout_marginTop="435dp"
                 android:text="Stop"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/white"
@@ -468,7 +323,7 @@
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="335dp"
+                android:layout_marginTop="380dp"
                 android:textColorHint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -484,7 +339,7 @@
                 android:id="@+id/button_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="389dp"
+                android:layout_marginTop="435dp"
                 android:layout_marginStart="25dp"
                 android:layout_gravity="left|bottom"
                 android:text="Save"
@@ -497,7 +352,7 @@
                 android:id="@+id/button_load"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="389dp"
+                android:layout_marginTop="435dp"
                 android:layout_marginEnd="25dp"
                 android:layout_gravity="right|bottom"
                 android:text="Load"
@@ -505,7 +360,6 @@
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
                 app:cornerRadius="40dp"/>
-
         </FrameLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

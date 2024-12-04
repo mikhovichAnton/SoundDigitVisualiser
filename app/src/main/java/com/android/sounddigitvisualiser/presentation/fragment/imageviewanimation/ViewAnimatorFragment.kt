@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,19 +13,16 @@ import android.view.WindowInsets
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.android.sounddigitvisualiser.R
 import com.android.sounddigitvisualiser.databinding.FragmentViewAnimatorBinding
 import com.android.sounddigitvisualiser.domain.controllers.AudioController
 import com.android.sounddigitvisualiser.domain.interactor.imageview.AnimationFunctionsForImageViews
 import com.android.sounddigitvisualiser.domain.model.AnimationImageModel
-import com.android.sounddigitvisualiser.domain.repository.local.navigation.FragmentNavigation
 import com.android.sounddigitvisualiser.presentation.viewmodel.AnimationViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,6 +33,10 @@ class ViewAnimatorFragment : Fragment() {
     private lateinit var contextLate: Context
     private lateinit var audioController: AudioController
     private var countDownTimer: CountDownTimer? = null
+    private var isAnimating: Boolean = false
+    private var isMovementActive: Boolean = false
+    private var isStartClicked: Boolean = false
+    private var isButtonVisible: Boolean = false
 
     private val args: ViewAnimatorFragmentArgs by navArgs()
     private val animationViewModel: AnimationViewModel by viewModel<AnimationViewModel>()
@@ -64,51 +66,57 @@ class ViewAnimatorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentViewAnimatorBinding.inflate(layoutInflater)
+        savedInstanceState.let {
+            if (it != null) {
+                isAnimating = it.getBoolean("isAnimating")
+                isStartClicked = it.getBoolean("isStartClicked")
+                isMovementActive = it.getBoolean("isMovementActive")
+                isButtonVisible = it.getBoolean("isButtonVisible")
+            }
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         hideNavigationBar()
 
         requestPermissions(arrayOf(RECORD_AUDIO), REQUEST_CODE)
 
         audioController = AudioController(contextLate)
+
         makeList()
         makeArray()
 
-        startingAnimationImageModel = AnimationImageModel(
-            0,
-            "ANIMO",
-            fromX,
-            tx,
-            fromY,
-            ty,
-            scaleFactor,
-            reactionTimer,
-            formNumber,
-            paramForColor,
-            volume)
-
+        startingAnimationImageModel = args.currentParameters
         checkParametersAndArgs(startingAnimationImageModel)
 
-
-
         binding.apply {
+            if (isAnimating && isStartClicked){
+                binding.buttonStart.visibility = View.INVISIBLE
+                onButtonClicked()
+            }
+            buttonStart.setOnClickListener {
+                isStartClicked = !isStartClicked
+                isAnimating = !isAnimating
+                isButtonVisible = !isButtonVisible
+                buttonStart.visibility = View.INVISIBLE
+                onButtonClicked()
+            }
+
+            backButton.setOnClickListener {
+                navigateToInfoMenu(view)
+            }
             buttonSave.setOnClickListener {
                 saveAnimationPreset()
             }
             buttonLoad.setOnClickListener{
                 navigateToLoadingParamsFragment(view)
             }
-            buttonStart.setOnClickListener {
-                buttonStart.visibility = View.INVISIBLE
-                onButtonClicked()
-            }
             buttonStop.setOnClickListener {
-                navigateToMainFragment()
+                buttonStart.visibility = View.VISIBLE
+                stoppedMovement()
             }
             menuButton.setOnClickListener {
                 if (dropdownMenu.visibility == View.VISIBLE) {
@@ -132,13 +140,14 @@ class ViewAnimatorFragment : Fragment() {
                     buttonRColor.visibility = View.INVISIBLE
                 }
             }
-
+            buttonInsertMotion.setOnClickListener {
+                isMovementActive = !isMovementActive
+            }
         }
     }
 
     private fun saveAnimationPreset(){
         with(binding){
-
             val name = etParameterNameInput.text.toString()
             if (name.isNotEmpty()) {
                 animationViewModel.initImage.observe(
@@ -168,7 +177,8 @@ class ViewAnimatorFragment : Fragment() {
 
     private fun checkParametersAndArgs(animationImageModel: AnimationImageModel){
         if (args.currentParameters.parameterName == animationImageModel.parameterName){
-            Toast.makeText(contextLate, "Current Animation parameter is ${animationImageModel.parameterName}",Toast.LENGTH_SHORT).show()
+            Toast.makeText(contextLate, "Current Animation parameter is " +
+                    "${animationImageModel.parameterName}",Toast.LENGTH_SHORT).show()
             setLoadedAnimationParameter(animationImageModel)
         }else{
             setLoadedAnimationParameter(args.currentParameters)
@@ -185,32 +195,29 @@ class ViewAnimatorFragment : Fragment() {
             formChange.progress = imageModel.formNumber
             colorSeekBar.progress = imageModel.paramForColor
             reactionDuration.progress = imageModel.reactionTimer.toInt()
+            animationViewModel.setLiveParamsForImage(
+                imageModel.id,
+                imageModel.parameterName,
+                imageModel.fromX,
+                imageModel.toX,
+                imageModel.fromY,
+                imageModel.toY,
+                imageModel.formNumber,
+                imageModel.paramForColor,
+                imageModel.reactionTimer,
+                imageModel.scaleFactor,
+                volume
+            )
         }
-        animationViewModel.setLiveParamsForImage(
-            id = imageModel.id,
-            name = imageModel.parameterName,
-            fromX = imageModel.fromX,
-            toX = imageModel.toX,
-            fromY = imageModel.fromY,
-            toY = imageModel.toY,
-            formNumber = imageModel.formNumber,
-            paramForColor = imageModel.paramForColor,
-            reactionTimer = imageModel.reactionTimer,
-            scaleFactor = imageModel.scaleFactor,
-            volume = volume
-        )
     }
 
     private fun navigateToLoadingParamsFragment(view: View) {
         val action = ViewAnimatorFragmentDirections.actionViewAnimatorFragmentToLoadingParameters()
         this.findNavController().navigate(action)
     }
-    private fun navigateToMainFragment() {
-        apply {
-            val navigate = this.activity as FragmentNavigation
-            navigate.navigationFrag(ViewAnimatorFragment(), false)
-            audioController.reset()
-        }
+    private fun navigateToInfoMenu(view: View) {
+            val action = ViewAnimatorFragmentDirections.actionViewAnimatorFragmentToInformationFragmentSecond()
+            view.findNavController().navigate(action)
     }
 
     private fun onChangingParameters(volume: Int) {
@@ -279,6 +286,8 @@ class ViewAnimatorFragment : Fragment() {
                 forScale.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                     override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                         scaleFactor = p1.toDouble()
+                        handleScale(list, volume, MAX_RECORD_AMPLITUDE, scaleFactor)
+
                     }
 
                     override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -339,9 +348,10 @@ class ViewAnimatorFragment : Fragment() {
                         }
                     }
                 })
+                setLiveData(animationViewModel.initImage)
                 animationViewModel.setLiveParamsForImage(
-                    0,
-                    "ANIMO",
+                    startingAnimationImageModel.id,
+                    startingAnimationImageModel.parameterName,
                     fromX,
                     tx,
                     fromY,
@@ -357,32 +367,48 @@ class ViewAnimatorFragment : Fragment() {
     }
 
     private fun onButtonClicked() {
-        if (audioController.isAudioInputing()) {
-            audioController.stop()
-            countDownTimer?.onFinish()
-            countDownTimer = null
-        } else {
-            audioController.start()
-            countDownTimer = object : CountDownTimer(maxOf(1000000_0000L), reactionTimer) {
-                override fun onTick(p0: Long) {
-                    volume = audioController.getVolume()
-                    onChangingParameters(volume)
-                    setLiveData(animationViewModel.initImage)
-                    animationFunctionsForImageViews.apply {
-                        handleRotation(array, volume, reactionTimer)
-                        handleVisibility(list, volume, MAX_RECORD_AMPLITUDE)
-                        handleScale(list, volume, MAX_RECORD_AMPLITUDE, scaleFactor)
-//                        handleMovement(list, volume, reactionTimer, fromX, tx, fromY, ty)
+        if (isAnimating) {
+            if (audioController.isAudioInputing()) {
+                audioController.stop()
+                countDownTimer?.onFinish()
+                countDownTimer = null
+            } else {
+                audioController.start()
+
+                countDownTimer = object : CountDownTimer(maxOf(1000000_0000L), reactionTimer) {
+                    override fun onTick(p0: Long) {
+                        volume = audioController.getVolume()
+                        onChangingParameters(volume)
+                        animationFunctionsForImageViews.apply {
+                            handleRotation(array, volume, reactionTimer)
+                            handleVisibility(list, volume, MAX_RECORD_AMPLITUDE)
+                            if (isMovementActive) {
+                                animationFunctionsForImageViews.handleMovement(
+                                    list,
+                                    volume,
+                                    reactionTimer,
+                                    fromX,
+                                    tx,
+                                    fromY,
+                                    ty
+                                )
+                            }
+                        }
                     }
-                }
 
-                override fun onFinish() {
-
+                    override fun onFinish() {}
                 }
+                countDownTimer?.start()
             }
-            countDownTimer?.start()
         }
+    }
 
+    private fun stoppedMovement() {
+        isAnimating = !isAnimating
+        isMovementActive = !isMovementActive
+        audioController.isAudioInputing()
+        audioController.stop()
+        audioController.reset()
     }
 
     private fun hideNavigationBar() {
@@ -443,6 +469,21 @@ class ViewAnimatorFragment : Fragment() {
                 visualQuatro8
             )
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("isAnimating",isAnimating)
+        outState.putBoolean("isMovementActive", isMovementActive)
+        outState.putBoolean("isStartClicked", isStartClicked)
+        outState.putBoolean("isButtonVisible", isButtonVisible)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        audioController.stop()
+        audioController.isAudioInputing()
+        audioController.reset()
     }
 
     companion object {

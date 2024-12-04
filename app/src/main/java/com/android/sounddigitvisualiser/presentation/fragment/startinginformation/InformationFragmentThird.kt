@@ -8,49 +8,41 @@ import android.view.ViewGroup
 import android.view.WindowInsets
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.android.sounddigitvisualiser.databinding.FragmentInformationFirstBinding
+import com.android.sounddigitvisualiser.databinding.FragmentInformationThirdBinding
 
 
-class InformationFragmentFirst : Fragment() {
-
-    private lateinit var binding: FragmentInformationFirstBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
+class InformationFragmentThird : Fragment() {
+    private lateinit var binding: FragmentInformationThirdBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentInformationFirstBinding.inflate(layoutInflater)
+        binding = FragmentInformationThirdBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hideNavigationBar()
-        navigateToCustomAnimation(view)
-        navigateToNextAnimation(view)
+        navigateToAIAnimation(view)
+        navigateToPreviousAnimation(view)
     }
 
-    private fun navigateToCustomAnimation(view: View) {
+    private fun navigateToPreviousAnimation(view: View) {
         with(binding) {
-            customAnimation.setOnClickListener {
+            toBackAnimation.setOnClickListener {
                 val action =
-                    InformationFragmentFirstDirections.
-                    actionInformationFragmentFirstToVisualCustomViewFragment()
+                    InformationFragmentThirdDirections.actionInformationFragmentThirdToInformationFragmentSecond()
                 view.findNavController().navigate(action)
             }
         }
     }
 
-    private fun navigateToNextAnimation(view: View) {
+    private fun navigateToAIAnimation(view: View) {
         with(binding) {
-            nextAnimation.setOnClickListener {
+            iiAnimation.setOnClickListener {
                 val action =
-                    InformationFragmentFirstDirections.
-                    actionInformationFragmentFirstToInformationFragmentSecond()
+                    InformationFragmentThirdDirections.actionInformationFragmentThirdToCustomIIAnimVisual()
                 view.findNavController().navigate(action)
             }
         }

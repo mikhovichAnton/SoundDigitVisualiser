@@ -15,7 +15,7 @@ class MovementAnimationTypes {
         duration = if (volume < 1000) {
             0L
         } else {
-            (volume / reactionTimer)
+            ((volume + 50) / (reactionTimer + 50))
         }
         val animation = TranslateAnimation(
             0.0f,
